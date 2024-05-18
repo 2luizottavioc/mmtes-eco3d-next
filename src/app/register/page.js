@@ -4,8 +4,11 @@ import Sidebar from "../components/Sidebar";
 import Image from "next/image";
 import eco3dLogo from "../../../public/eco3d-logo.png";
 
+<<<<<<< HEAD
 import Header from "../components/Header";
 
+=======
+>>>>>>> 553c5712268a3d6722052491c284c475ad7fa6d8
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "@/contexts/AuthContext";

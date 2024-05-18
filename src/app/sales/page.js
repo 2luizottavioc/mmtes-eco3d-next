@@ -1,6 +1,6 @@
 import SidebarLinks from "../components/SidebarLinks";
 
-export default function Products() {
+export default function Sales() {
   return (
     <div>
       <SidebarLinks />
