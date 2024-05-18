@@ -6,21 +6,20 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "@/contexts/AuthContext";
 import { Router } from "next/router";
+import Sidebar from "../components/Sidebar";
 
 export default function Login() {
   const { register, handleSubmit } = useForm();
   const { singIn } = useContext(AuthContext);
-  
+
   async function handleSignIn(data) {
     const result = await singIn(data);
-    if (result) return window.location.href = "/products";
+    if (result) return (window.location.href = "/products");
   }
 
   return (
     <div className="h-screen flex ">
-      <aside className="bg-black w-64 flex justify-center items-end ">
-        <Image src={eco3dLogo} width={100} height={100} alt="Eco 3D Logo" />
-      </aside>
+      <Sidebar />
       <main className="flex-1 flex justify-center items-center">
         <div className="w-full flex flex-col items-center justify-center ">
           <form className="w-2/4" onSubmit={handleSubmit(handleSignIn)}>
