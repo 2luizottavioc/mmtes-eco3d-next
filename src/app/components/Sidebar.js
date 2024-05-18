@@ -1,5 +1,5 @@
 import Image from "next/image";
-import eco3dLogo from "../public/eco3dLogo.png";
+import eco3dLogo from "../../../public/eco3d-logo.png";
 const Sidebar = () => {
   return (
     <aside className="bg-black w-64 flex justify-center items-end h-screen">
