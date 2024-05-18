@@ -1,7 +1,6 @@
-"use client"
+"use client";
 
 import Sidebar from "../components/Sidebar";
-
 
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
