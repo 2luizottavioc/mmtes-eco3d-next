@@ -5,19 +5,21 @@ import eco3dLogo from "../../../public/eco3d-logo.png";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "@/contexts/AuthContext";
+import { Router } from "next/router";
 
 export default function Login() {
   const { register, handleSubmit } = useForm();
   const { singIn } = useContext(AuthContext);
-
+  
   async function handleSignIn(data) {
-    await singIn(data);
+    const result = await singIn(data);
+    if (result) return window.location.href = "/products";
   }
 
   return (
     <div className="h-screen flex ">
       <aside className="bg-black w-64 flex justify-center items-end ">
-        <Image src={eco3dLogo} width={100} height={100} />
+        <Image src={eco3dLogo} width={100} height={100} alt="Eco 3D Logo" />
       </aside>
       <main className="flex-1 flex justify-center items-center">
         <div className="w-full flex flex-col items-center justify-center ">
