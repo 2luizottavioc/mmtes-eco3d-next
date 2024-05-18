@@ -1,7 +1,10 @@
-"use client"
+"use client";
 
 import Sidebar from "../components/Sidebar";
+import Image from "next/image";
+import eco3dLogo from "../../../public/eco3d-logo.png";
 
+import Header from "../components/Header";
 
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
@@ -17,9 +20,9 @@ export default function Register() {
   }
 
   return (
-    <div className="h-screen flex">
+    <div className="h-screen  w-sreen flex">
       <Sidebar />
-      <main className="flex-1 flex justify-center items-center">
+      <main className="flex-1 flex justify-center w-full items-center">
         <div className="w-full flex flex-col items-center justify-center">
           <form className="w-2/4" onSubmit={handleSubmit(handleRegister)}>
             <fieldset className="border-gray-400 border p-4 flex flex-col items-center rounded-t gap-4">
