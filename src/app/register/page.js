@@ -29,10 +29,12 @@ export default function Register() {
       .then(res => res.data)
       .catch(err => null)
 
+      console.log(user)
+
       if (!user) return setError('Erro ao registrar o usuário');
 
-      router.refresh();
-      router.push('/login');
+      // router.refresh();
+      // router.push('/login');
 
       return
 
@@ -52,7 +54,7 @@ export default function Register() {
             >
             <fieldset className="border-gray-400 border p-4 flex flex-col items-center rounded-t gap-4">
               <h1 className="text-primary-900 text-3xl font-bold">
-                Criar Conta
+                Criar Conta {error}
               </h1>
               <div className="flex flex-col w-full">
                 <label className="text-primary-900">Nome:</label>
