@@ -6,7 +6,7 @@ export default function Entry() {
     <div className="flex">
       <SidebarLinks />
       <div className="w-full">
-        <Header/>
+        <Header page="Produtos"/>
       </div>
     </div>
   );
