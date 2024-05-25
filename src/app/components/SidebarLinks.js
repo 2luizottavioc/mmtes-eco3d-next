@@ -1,6 +1,10 @@
+'use client';
+
+import { signOut } from "next-auth/react";
+
 const SidebarLinks = () => {
   return (
-    <aside className="bg-black w-64 flex justify-start items-start h-screen p-12 ">
+    <aside className="bg-black w-64 flex flex-col justify-start items-start h-screen p-12 ">
       <ul className="mt-5 space-y-4 text-primary-600 font-medium	text-lg	">
         <li className="">
           <a href="./stock" className="hover:text-white transition-all	">
@@ -17,6 +21,7 @@ const SidebarLinks = () => {
           <a href="./sales">Vendas</a>
         </li>
       </ul>
+      <button className="mt-auto p-1 px-4 text-primary-600 border" onClick={() => signOut()}>sair</button>
     </aside>
   );
 };
