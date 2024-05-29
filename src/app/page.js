@@ -64,7 +64,7 @@ export default function Home() {
               <p className="mt-4 text-3xl">
                 Gerenciamento de{" "}
                 <span className="text-primary-400">estoque</span> usado para
-                controle de materiais recicláveis para filamentos de{" "}
+                controlar materiais recicláveis utilizados como filamento de
                 <span className="text-primary-400">impressora 3D!</span>
               </p>
               <form className="mt-4 mb-4">
