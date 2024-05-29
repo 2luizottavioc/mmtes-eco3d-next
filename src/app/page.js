@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Head from "next/head";
+import Login from "./login/page";
 
 export default function Home() {
   return (
@@ -46,7 +47,7 @@ export default function Home() {
                 Benefícios
               </a>
               <a
-                href="#"
+                href="./login"
                 className="ml-4 px-3 py-1 border border-white text-white rounded-md  hover:bg-white hover:text-black"
               >
                 Entrar
