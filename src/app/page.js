@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Head from "next/head";
-import Login from "./login/page";
 
 export default function Home() {
   return (
@@ -73,7 +72,7 @@ export default function Home() {
                   type="button"
                   className="bg-black text-primary-700 font-bold py-2 px-4 rounded-lg hover:text-primary-500 "
                 >
-                  Cadastre-se
+                  <a href="./register">Cadastre-se</a>
                 </button>
               </form>
             </div>
