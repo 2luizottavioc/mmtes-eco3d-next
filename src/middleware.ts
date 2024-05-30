@@ -9,11 +9,11 @@ const callbackOptions: NextAuthMiddlewareOptions = {}
 
 export const config = {
     matcher: [
-        '/profile',
-        '/products',
-        '/stock',
-        '/entry',
-        '/sales',
+        // '/profile',
+        // '/products',
+        // '/stock',
+        // '/entry',
+        // '/sales',
     ], 
 }
 

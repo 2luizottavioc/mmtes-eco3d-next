@@ -53,7 +53,8 @@ const authOptions: NextAuthOptions = {
         }
     },
     pages: {
-        signIn: '/login'
+        signIn: '/login',
+        error: '/login'
     }
 }
 const handler = NextAuth(authOptions);
