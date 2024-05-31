@@ -1,23 +1,17 @@
-"use client";
+import SidebarLinks from "../../components/SidebarLinks";
+import Header from "../../components/Header";
 
-import Header from "../components/Header";
-import SidebarLinks from "../components/SidebarLinks";
-import { useSession } from "next-auth/react";
-
-export default function Entry() {
-  // const { data: session } = useSession();
-  // console.log(session.user);
-
-  return (
+export default function Sales() {
+  return(
     <div className="flex">
       <SidebarLinks />
       <div className="w-full">
-        <Header page="Entradas" />
+        <Header page="Vendas" />
         <div className="flex flex-col gap-4 p-4 items-center justify-center">
           <form className="w-3/4">
             <fieldset className=" p-4 flex flex-col items-center rounded-t gap-4">
               <h1 className="text-primary-900 text-3xl font-bold">
-                Criar entradas
+                Registrar vendas
               </h1>
               <div className="flex flex-col w-full">
                 <label className="text-primary-900">
@@ -57,11 +51,21 @@ export default function Entry() {
                   className="border-gray-400 border rounded p-1"
                 />
               </div>
+              <div className="flex flex-col w-full">
+                <label className="text-primary-900">Estoque atual</label>
+                <select
+                 className="border-gray-400 border rounded p-2"
+                >
+                  <option>Débito</option>
+                  <option>Crédito</option>
+                  <option>Dinheiro</option>
+                </select>
+              </div>
               <button
                 type="submit"
                 className="bg-primary-900 px-4 py-2 rounded text-white w-full hover:brightness-75 font-bold"
               >
-                SALVAR
+                REGISTRAR
               </button>
             </fieldset>
           </form>

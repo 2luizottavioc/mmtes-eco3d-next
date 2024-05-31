@@ -3,6 +3,11 @@
 import Header from "../components/Header";
 import SidebarLinks from "../components/SidebarLinks";
 import { useSession } from "next-auth/react";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from '@mui/icons-material/Add';
+import { green } from "@mui/material/colors";
+
 
 export default function Entry() {
   // const { data: session } = useSession();
@@ -12,59 +17,69 @@ export default function Entry() {
     <div className="flex">
       <SidebarLinks />
       <div className="w-full">
-        <Header page="Entradas" />
-        <div className="flex flex-col gap-4 p-4 items-center justify-center">
-          <form className="w-3/4">
-            <fieldset className=" p-4 flex flex-col items-center rounded-t gap-4">
-              <h1 className="text-primary-900 text-3xl font-bold">
-                Criar entradas
-              </h1>
-              <div className="flex flex-col w-full">
-                <label className="text-primary-900">
-                  Data
-                </label>
-                <input
-                  type="date"
-                  name="name"
-                  className="border-gray-400 border rounded p-1"
-                />
-              </div>
-              <div className="flex flex-col w-full">
-                <label className="text-primary-900">Estoque atual</label>
-                <select
-                 className="border-gray-400 border rounded p-2"
-                >
-                  <option>Item 1</option>
-                  <option>Item 2</option>
-                  <option>Item 3</option>
-                  <option>Item 4</option>
-                  <option>Item 5</option>
-                </select>
-              </div>
-              <div className="flex flex-col w-full">
-                <label className="text-primary-900">Quantidade</label>
-                <input
-                  type="number"
-                  name="valor-venda"
-                  className="border-gray-400 border rounded p-1"
-                />
-              </div>
-              <div className="flex flex-col w-full">
-                <label className="text-primary-900">Valor custo</label>
-                <input
-                  type="number"
-                  name="valor-custo"
-                  className="border-gray-400 border rounded p-1"
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-primary-900 px-4 py-2 rounded-2xl text-white w-1/3 hover:brightness-75 font-bold"
-              >
-                SALVAR
-              </button>
-            </fieldset>
-          </form>
+        <Header page="Produtos"/>
+        <div className="flex flex-col gap-4 p-4">
+          <h1 className="text-center text-primary-700 text-3xl font-bold">ENTRADAS</h1>
+          <div className="flex flex-col items-center justify-center ">
+            <table className="w-2/3  text-center">
+              <tr >
+                  <th className="w-64 text-primary-700 font-bold text-xl p-1 border-b-2 border-gray-400">
+                    Data
+                  </th>
+                  <th  className="w-64 text-primary-700 font-bold text-xl p-1 border-b-2 border-gray-400">
+                    Produto
+                  </th>
+                  <th  className="w-64 text-primary-700 font-bold text-xl p-1 border-b-2 border-gray-400">
+                   Quantidade
+                  </th>
+                  <th  className="w-64 text-primary-700 font-bold text-xl p-1 border-b-2 border-gray-400">
+                   Valor de Custo
+                  </th>
+                  <th  className="w-64 text-primary-700 font-bold text-xl p-1 border-b-2 border-gray-400">
+                 
+                  </th>
+              </tr>
+              <tr>
+                <td className="p-3 border-b border-gray-400">
+                  31/05/2002
+                </td>
+                <td className="p-3 border-b border-gray-400">
+                  Garrafa PET
+                </td>
+                <td className="p-3 border-b border-gray-400">
+                  10
+                </td>
+                <td className="p-3 border-b border-gray-400">
+                  14,99
+                </td>
+                <td className="p-3 border-b border-gray-400 flex gap-4 items-center justify-center">
+                  <button><EditIcon  sx={{ color: green[600] }}/></button>
+                  <button><DeleteIcon  sx={{ color: green[600] }}/></button>
+                </td>
+              </tr>
+              <tr>
+                <td className="p-3 border-b border-gray-400">
+                  31/05/2002
+                </td>
+                <td className="p-3 border-b border-gray-400">
+                  Tampinhas Plásticas
+                </td>
+                <td className="p-3 border-b border-gray-400">
+                  10
+                </td>
+                <td className="p-3 border-b border-gray-400">
+                  5,99
+                </td>
+                <td className="p-3 border-b border-gray-400 flex gap-4 items-center justify-center">
+                  <button><EditIcon  sx={{ color: green[600] }}/></button>
+                  <button><DeleteIcon  sx={{ color: green[600] }}/></button>
+                </td>
+              </tr>
+            </table>
+            <button className=" bg-primary-600 w-2/3 p-4 rounded-b text-white font-bold hover:brightness-90">
+             <AddIcon/> ADICIONAR ENTRADA
+            </button>
+          </div>
         </div>
       </div>
     </div>
