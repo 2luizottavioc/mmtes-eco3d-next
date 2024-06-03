@@ -8,7 +8,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from '@mui/icons-material/Add';
 import { green } from "@mui/material/colors";
 
-
 export default function Entry() {
   // const { data: session } = useSession();
   // console.log(session.user);

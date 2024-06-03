@@ -3,7 +3,7 @@ import Head from "next/head";
 
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <header>
         <nav className="bg-black">
           <div className="container mx-auto px-4 flex justify-between items-center py-3">
@@ -31,7 +31,7 @@ export default function Home() {
                 ></path>
               </svg>
             </button>
-            <div className="hidden md:flex space-x-4">
+            <div className="hidden md:flex items-center space-x-4">
               <a href="#home" className="text-white">
                 Home
               </a>
@@ -62,12 +62,12 @@ export default function Home() {
                 recicláveis para filamentos de impressora 3D!
               </p>
               <form className="mt-4 mb-4">
-                <button
-                  type="button"
+                <a
+                  href="/register"
                   className="bg-black text-white py-2 px-4 rounded-lg"
                 >
                   Cadastre-se
-                </button>
+                </a>
               </form>
             </div>
           </div>

@@ -8,7 +8,7 @@ const Header = ({page}) => {
     return(
         <div className="bg-black w-full h-16 flex items-center p-4 justify-between ">
           <div className="flex items-center gap-6">
-          <Image src={eco3dLogo} width={50} height={50}/>
+          <Image src={eco3dLogo} width={50} height={50} alt="Eco 3D Logo" />
           <span className="text-primary-600 font-semibold">{page} Eco3D</span>
           </div>
           <div className="flex gap-6">
