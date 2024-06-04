@@ -7,10 +7,10 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import api from "../../../services/http";
 
-export default function Stock({ params }) {
+export default function EditProduct({ params }) {
   const productId = params.productId;
+  
   const router = useRouter();
-
   const { data: session, status } = useSession();
 
   const [name, setName] = useState(null);
@@ -23,7 +23,9 @@ export default function Stock({ params }) {
     if (status !== "authenticated") return;
 
     const token = session.user.token;
-    api.get(`/product/${productId}`, { headers: { Authorization: `Bearer ${token}` } })
+    const headers = { Authorization: `Bearer ${token}` }
+
+    api.get(`/product/${productId}`, { headers })
       .then((res) => {
         const data = res.data
 
