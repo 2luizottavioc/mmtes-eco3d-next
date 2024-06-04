@@ -99,8 +99,8 @@ export default function Products() {
                         </button>
                       </td>
                     </tr>
-                  )
-                  ))}
+                  ))
+                )}
                 {products && products.length === 0 && (
                   <tr>
                     <td className="p-3 border-b border-gray-400" colSpan={4}>
