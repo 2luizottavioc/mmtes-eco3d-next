@@ -21,8 +21,7 @@ export default function Products() {
     if (status !== "authenticated") return;
 
     const token = session.user.token;
-    api
-      .get("/product", { headers: { Authorization: `Bearer ${token}` } })
+    api.get("/product", { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         setProducts(res.data);
       })
@@ -74,7 +73,9 @@ export default function Products() {
                         R$ {product.sale_price}
                       </td>
                       <td className="p-3 border-b border-gray-400 flex gap-4 items-center justify-center">
-                        <button><EditIcon sx={{ color: green[600] }} /></button>
+                        <button onClick={() => router.push(`/products/edit/${product.id}`)}>
+                          <EditIcon sx={{ color: green[600] }} />
+                        </button>
                         <button><DeleteIcon sx={{ color: green[600] }} /></button>
                       </td>
                     </tr>
@@ -85,11 +86,11 @@ export default function Products() {
             <button
               onClick={() => router.push("/products/create")}
               className="mt-4 cursor-pointer flex justify-center gap-2 bg-primary-600 w-2/3 p-4 rounded-b text-white font-bold hover:brightness-90">
-            <AddIcon /> ADICIONAR PRODUTO
-          </button>
+              <AddIcon /> ADICIONAR PRODUTO
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </div >
   );
 }
