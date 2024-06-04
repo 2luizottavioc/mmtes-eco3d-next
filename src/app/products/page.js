@@ -28,6 +28,21 @@ export default function Products() {
       .catch((err) => console.log(err));
   }, [status, session]);
 
+  const handleDelete = async (id) => {
+    try {
+      const token = session.user.token
+      const headers = { Authorization: `Bearer ${token}` }
+
+      await api.delete(`/product/${id}`, { headers }).then((res) => {
+        window.location.reload();
+      }).catch((err) => {
+        console.log(err)
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="flex">
       <SidebarLinks />
@@ -49,7 +64,7 @@ export default function Products() {
                     Preço
                   </th>
                   <th className="w-64 text-primary-700 font-bold text-xl p-1 border-b-2 border-gray-400">
-
+                    Ações
                   </th>
                 </tr>
               </thead>
@@ -76,11 +91,23 @@ export default function Products() {
                         <button onClick={() => router.push(`/products/edit/${product.id}`)}>
                           <EditIcon sx={{ color: green[600] }} />
                         </button>
-                        <button><DeleteIcon sx={{ color: green[600] }} /></button>
+                        <button onClick={() => {
+                          const confirm = window.confirm(`Tem certeza que deseja excluir o item "${product.name}"?`)
+                          if (confirm) handleDelete(product.id)
+                        }}>
+                          <DeleteIcon sx={{ color: green[600] }} />
+                        </button>
                       </td>
                     </tr>
                   )
                   ))}
+                {products && products.length === 0 && (
+                  <tr>
+                    <td className="p-3 border-b border-gray-400" colSpan={4}>
+                      Nenhum item encontrado
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
             <button

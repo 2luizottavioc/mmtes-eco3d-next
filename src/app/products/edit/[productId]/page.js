@@ -38,6 +38,7 @@ export default function Stock({ params }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
       const token = session.user.token
       const data = { name, sale_price: price, description }
