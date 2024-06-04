@@ -28,6 +28,21 @@ export default function Entry() {
       .catch((err) => console.log(err));
   }, [status, session]);
 
+  const handleDelete = async (id) => {
+    try {
+      const token = session.user.token
+      const headers = { Authorization: `Bearer ${token}` }
+
+      await api.delete(`/entry/${id}`, { headers }).then((res) => {
+        window.location.reload();
+      }).catch((err) => {
+        console.log(err)
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="flex">
       <SidebarLinks />
@@ -90,7 +105,7 @@ export default function Entry() {
                         </button>
                         <button onClick={() => {
                           const confirm = window.confirm(`Tem certeza que deseja excluir esta entrada?`)
-                          if (confirm) handleDelete(product.id)
+                          if (confirm) handleDelete(entry.id)
                         }}>
                           <DeleteIcon sx={{ color: green[600] }} />
                         </button>
