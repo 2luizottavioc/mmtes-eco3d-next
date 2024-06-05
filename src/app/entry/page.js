@@ -115,7 +115,7 @@ export default function Entry() {
                 )}
                 {entries && entries.length === 0 && (
                   <tr>
-                    <td className="p-3 border-b border-gray-400" colSpan={4}>
+                    <td className="p-3 border-b border-gray-400" colSpan={6}>
                       Nenhum item encontrado
                     </td>
                   </tr>
