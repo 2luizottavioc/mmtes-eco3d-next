@@ -39,7 +39,7 @@ export default function CreateEntry() {
     }
 
     const token = session.user.token
-    const data = { id_product: idProduct, quantity, provider, date }
+    const data = { id_product: idProduct, quantity, cost_price: price, provider, date }
     const headers = { Authorization: `Bearer ${token}` }
 
     await api.post("/entry", data, { headers }).then((res) => {
@@ -47,7 +47,6 @@ export default function CreateEntry() {
     }).catch((err) => {
       console.log(err)
     });
-
   };
 
   return (
@@ -68,6 +67,7 @@ export default function CreateEntry() {
                   onChange={(e) => setIdProduct(parseInt(e.target.value))}
                   required
                 >
+                  <option disabled value=""> Selecione... </option>
                   {products?.map((product) => (
                     <option
                       key={product.id}

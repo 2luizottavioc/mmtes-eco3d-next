@@ -1,14 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Header from "../../../components/Header";
-import SidebarLinks from "../../../components/SidebarLinks";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import api from "../../../services/http";
+import SidebarLinks from "../../../components/SidebarLinks";
+import Header from "../../../components/Header";
 
-export default function EditEntry({ params }) {
-  const entryId = params.entryId;
+export default function EditSale({ params }) {
+  const saleId = params.saleId;
 
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -16,10 +16,10 @@ export default function EditEntry({ params }) {
   const [idProduct, setIdProduct] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
-  const [provider, setProvider] = useState("");
+  const [clientName, setClientName] = useState("");
   const [date, setDate] = useState("");
 
-  const [entry, setEntry] = useState(null);
+  const [sale, setSale] = useState(null);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -28,17 +28,17 @@ export default function EditEntry({ params }) {
     const token = session.user.token;
     const headers = { Authorization: `Bearer ${token}` }
 
-    api.get(`/entry/${entryId}`, { headers })
+    api.get(`/sale/${saleId}`, { headers })
       .then((res) => {
         const data = res.data
 
         setIdProduct(data.id_product)
         setQuantity(data.quantity)
-        setPrice(data.cost_price)
-        setProvider(data.provider)
+        setPrice(data.sale_value)
+        setClientName(data.client_name)
         setDate(data.date)
 
-        setEntry(data)
+        setSale(data)
       })
       .catch((err) => console.log(err));
 
@@ -58,14 +58,14 @@ export default function EditEntry({ params }) {
       const data = { 
         id_product: idProduct, 
         quantity, 
-        cost_price: price, 
-        provider, 
+        sale_value: price, 
+        client_name: clientName, 
         date 
       }
       const headers = { Authorization: `Bearer ${token}` }
 
-      await api.put(`/entry/${entryId}`, data, { headers }).then((res) => {
-        router.push("/entry");
+      await api.put(`/sale/${saleId}`, data, { headers }).then((res) => {
+        router.push("/sales");
       }).catch((err) => {
         console.log(err)
       });
@@ -75,19 +75,19 @@ export default function EditEntry({ params }) {
     }
   };
 
-  return (
+  return(
     <div className="flex">
       <SidebarLinks />
       <div className="w-full">
-        <Header page="Entradas" />
+        <Header page="Vendas" />
         <div className="flex flex-col gap-4 p-4 items-center justify-center">
-          {!entry ? (
+          {!sale ? (
             <div>Carregando...</div>
           ) : (
             <form className="w-3/4" onSubmit={handleSubmit}>
               <fieldset className=" p-4 flex flex-col items-center rounded-t gap-4">
                 <h1 className="text-primary-900 text-3xl font-bold">
-                  Editar Entrada
+                  Editar Venda
                 </h1>
                 <div className="flex flex-col w-full">
                   <label className="text-primary-900">Produto</label>
@@ -132,10 +132,10 @@ export default function EditEntry({ params }) {
                   />
                 </div>
                 <div className="flex flex-col w-full">
-                  <label className="text-primary-900">Valor custo</label>
+                  <label className="text-primary-900">Valor venda</label>
                   <input
                     type="number"
-                    name="valor-custo"
+                    name="valor-venda"
                     step="0.01"
                     className="border-gray-400 border rounded p-1"
                     value={price}
@@ -144,14 +144,14 @@ export default function EditEntry({ params }) {
                   />
                 </div>
                 <div className="flex flex-col w-full">
-                  <label className="text-primary-900">Fornecedor</label>
+                  <label className="text-primary-900">Cliente</label>
                   <input
                     type="text"
                     name="fornecedor"
                     className="border-gray-400 border rounded p-1"
-                    value={provider}
+                    value={clientName}
                     required
-                    onChange={(e) => setProvider(e.target.value)}
+                    onChange={(e) => setClientName(e.target.value)}
                   />
                 </div>
                 <button
