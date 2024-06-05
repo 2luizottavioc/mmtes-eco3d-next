@@ -6,10 +6,14 @@ import { useState } from "react";
 import api from "../../services/http";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Loading from "../../components/loading";
+
 
 export default function CreateProduct() {
   const router = useRouter();
   const { data: session, status } = useSession();
+
+  const [loading, setLoading] = useState(false);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -28,13 +32,16 @@ export default function CreateProduct() {
       const data = { name, sale_price: price, description }
       const headers = { Authorization: `Bearer ${token}` }
 
+      setLoading(true)
       await api.post("/product", data, { headers }).then((res) => {
         router.push("/products");
       }).catch((err) => {
         console.log(err)
+        setLoading(false)
       });
     } catch (err) {
       console.log(err);
+      setLoading(false)
     }
   };
 
@@ -91,6 +98,7 @@ export default function CreateProduct() {
           </form>
         </div>
       </div>
+      {loading && <Loading />}
     </div>
   );
 }

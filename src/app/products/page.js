@@ -10,22 +10,30 @@ import api from "../services/http";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Loading from "../components/loading";
 
 export default function Products() {
   const router = useRouter();
 
   const { data: session, status } = useSession();
   const [products, setProducts] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (status !== "authenticated") return;
 
     const token = session.user.token;
+
+    setLoading(true)
     api.get("/product", { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         setProducts(res.data);
+        setLoading(false)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+        setLoading(false)
+      });
   }, [status, session]);
 
   const handleDelete = async (id) => {
@@ -88,7 +96,10 @@ export default function Products() {
                         R$ {product.sale_price}
                       </td>
                       <td className="p-3 border-b border-gray-400 flex gap-4 items-center justify-center">
-                        <button className="p-3" onClick={() => router.push(`/products/edit/${product.id}`)}>
+                        <button className="p-3" onClick={() => {
+                          setLoading(true)
+                          router.push(`/products/edit/${product.id}`)
+                          }}>
                           <EditIcon sx={{ color: green[600] }} />
                         </button>
                         <button className="p-3" onClick={() => {
@@ -111,13 +122,17 @@ export default function Products() {
               </tbody>
             </table>
             <button
-              onClick={() => router.push("/products/create")}
+              onClick={() => {
+                setLoading(true)
+                router.push("/products/create")
+              }}
               className="mt-4 cursor-pointer flex justify-center gap-2 bg-primary-600 w-2/3 p-4 rounded-b text-white font-bold hover:brightness-90">
               <AddIcon /> ADICIONAR PRODUTO
             </button>
           </div>
         </div>
       </div>
+      {loading && <Loading />}
     </div >
   );
 }
