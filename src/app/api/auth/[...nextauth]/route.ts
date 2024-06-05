@@ -1,7 +1,7 @@
 import NextAuth from "next-auth/next";
 import { NextAuthOptions } from "next-auth";
 import CredentialProvider from "next-auth/providers/credentials";
-import { api } from "../../../services/http";
+import api from "../../../services/http";
 
 const authOptions: NextAuthOptions = {
     providers: [
@@ -21,8 +21,7 @@ const authOptions: NextAuthOptions = {
 
                 if (!token) return null
 
-                api.defaults.headers.common['Authorization'] = `Bearer ${token}`
-                return user
+                return { ...user, token }
             },
         })
     ],
@@ -31,13 +30,14 @@ const authOptions: NextAuthOptions = {
             const customUser = user as unknown as any
 
             if (!user) return token
-            
+
             return {
                 ...token,
                 name: customUser.name,
                 email: customUser.email,
                 cpf_cnpj: customUser.cpf_cnpj,
-                contact: customUser.contact
+                contact: customUser.contact,
+                token: customUser.token
             }
         },
         async session({ session, token }) {
@@ -47,13 +47,15 @@ const authOptions: NextAuthOptions = {
                     name: token.name,
                     email: token.email,
                     cpf_cnpj: token.cpf_cnpj,
-                    contact: token.contact
+                    contact: token.contact,
+                    token: token.token
                 }
             }
         }
     },
     pages: {
-        signIn: '/login'
+        signIn: '/login',
+        error: '/login'
     }
 }
 const handler = NextAuth(authOptions);

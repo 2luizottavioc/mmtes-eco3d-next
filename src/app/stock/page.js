@@ -1,5 +1,9 @@
-import SidebarLinks from "../components/SidebarLinks";
-import Header from "../components/Header";
+import SidebarLinks from "@/components/SidebarLinks";
+import Header from "@/components/Header";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { green } from  '@mui/material/colors';
+
 export default function Stock() {
   return (
     <div className="flex">
@@ -20,6 +24,9 @@ export default function Stock() {
                   <th  className="w-64 text-primary-700 font-bold text-xl p-1 border-b-2 border-gray-400">
                     Preço
                   </th>
+                  <th  className="w-64 text-primary-700 font-bold text-xl p-1 border-b-2 border-gray-400">
+                 
+                  </th>
               </tr>
               <tr>
                 <td className="p-3 border-b border-gray-400">
@@ -31,6 +38,10 @@ export default function Stock() {
                 <td className="p-3 border-b border-gray-400">
                   14,99
                 </td>
+                <td className="p-3 border-b border-gray-400 flex gap-4 items-center justify-center">
+                  <button><EditIcon  sx={{ color: green[600] }}/></button>
+                  <button><DeleteIcon  sx={{ color: green[600] }}/></button>
+                </td>
               </tr>
               <tr>
                 <td className="p-3 border-b border-gray-400">
@@ -41,6 +52,10 @@ export default function Stock() {
                 </td>
                 <td className="p-3 border-b border-gray-400">
                   8,99
+                </td>
+                <td className="p-3 border-b border-gray-400 flex gap-4 items-center justify-center">
+                  <button><EditIcon  sx={{ color: green[600] }}/></button>
+                  <button><DeleteIcon  sx={{ color: green[600] }}/></button>
                 </td>
               </tr>
             </table>

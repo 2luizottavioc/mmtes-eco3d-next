@@ -78,7 +78,7 @@ export default function Login() {
             <fieldset className="border-gray-400 border p-4 flex flex-col items-center rounded-t gap-4">
               <h1 className="text-primary-900 text-3xl font-bold ">LOGIN</h1>
               <div className="flex flex-col  w-full ">
-                <label className="text-primary-900">Nome:</label>
+                <label className="text-primary-900">Email:</label>
                 <input
                   type="text"
                   name="name"

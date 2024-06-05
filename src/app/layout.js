@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <html lang="pt-br">
         <body className={inter.className}>
-          <div className="absolute w-svw h-svh flex flex-col bg-zinc-50 text-zinc-950">
+          <div className="absolute w-svw h-svh flex flex-col bg-zinc-50 text-zinc-950 overflow-y-auto overflow-x-hidden">
             {children}  
           </div>
         </body>

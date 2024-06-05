@@ -1,9 +1,8 @@
 import Image from "next/image";
-import Head from "next/head";
 
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <header>
         <nav className="bg-black">
           <div className="container mx-4 px-20 flex justify-between items-center py-3">
@@ -31,8 +30,7 @@ export default function Home() {
                 ></path>
               </svg>
             </button>
-
-            <div className="hidden md:flex space-x-4 ">
+            <div className="hidden md:flex items-center space-x-4">
               <a href="#home" className="text-white hover:text-primary-700">
                 Home
               </a>
@@ -46,8 +44,8 @@ export default function Home() {
                 Benefícios
               </a>
               <a
-                href="./login"
-                className="ml-4 px-3 py-1 border border-white text-white rounded-md  hover:bg-white hover:text-black"
+                href="/login"
+                className="ml-5 px-4 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-black"
               >
                 Entrar
               </a>
@@ -68,12 +66,12 @@ export default function Home() {
                 <span className="text-primary-400">impressora 3D!</span>
               </p>
               <form className="mt-4 mb-4">
-                <button
-                  type="button"
-                  className="bg-black text-primary-700 font-bold py-2 px-4 rounded-lg hover:text-primary-500 "
+                <a
+                  href="/register"
+                  className="bg-black text-white py-2 px-4 rounded-lg hover:bg-white hover:text-black"
                 >
-                  <a href="./register">Cadastre-se</a>
-                </button>
+                  Cadastre-se
+                </a>
               </form>
             </div>
           </div>

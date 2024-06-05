@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
-import { api } from "../services/http";
+import api from "../services/http";
 
 export default function Register() {
   const router = useRouter();
@@ -19,27 +19,25 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      const user = api.post('/auth/register', {
+      const data = {
         email,
         cpf_cnpj: cpfCnpj,
         contact,
         name,
         password
-      })
-      .then(res => res.data)
-      .catch(err => null)
+      }
 
-      console.log(user)
+      const user = await api.post('/auth/register', data)
+        .then(res => res.data)
+        .catch(err => null)
 
       if (!user) return setError('Erro ao registrar o usuário');
 
-      // router.refresh();
-      // router.push('/login');
-
+      router.push('/login');
       return
 
     } catch (error) {
-      console.log('LOGIN ERROR: ', error);
+      console.log('login error: ', error);
     }
   };
 
@@ -48,10 +46,10 @@ export default function Register() {
       <Sidebar />
       <main className="flex-1 flex justify-center w-full items-center">
         <div className="w-full flex flex-col items-center justify-center">
-          <form 
+          <form
             className="w-2/4"
-            onSubmit={handleRegister} 
-            >
+            onSubmit={handleRegister}
+          >
             <fieldset className="border-gray-400 border p-4 flex flex-col items-center rounded-t gap-4">
               <h1 className="text-primary-900 text-3xl font-bold">
                 Criar Conta {error}
@@ -101,8 +99,8 @@ export default function Register() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="bg-primary-900 px-4 py-1 rounded-2xl text-white w-1/3 hover:brightness-75 font-bold"
               >
                 CRIAR
