@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Loading from "./components/loading"
 
 export default function Home() {
   return (
     <div className="">
+
       <header>
         <nav className="bg-black">
           <div className="container mx-4 px-20 flex justify-between items-center py-3">

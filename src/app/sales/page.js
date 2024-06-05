@@ -59,11 +59,11 @@ export default function Entry() {
                   Débito
                 </td>
                 <td className="p-3 border-b border-gray-400 flex gap-4 items-center justify-center">
-                  <button><EditIcon  sx={{ color: green[600] }}/></button>
-                  <button><DeleteIcon  sx={{ color: green[600] }}/></button>
+                  <button className="p-3"><EditIcon  sx={{ color: green[600] }}/></button>
+                  <button className="p-3"><DeleteIcon  sx={{ color: green[600] }}/></button>
                 </td>
-              </tr>
-              <tr>
+                </tr>
+              <tr className="h-auto">
                 <td className="p-3 border-b border-gray-400">
                   31/05/2002
                 </td>
@@ -80,12 +80,12 @@ export default function Entry() {
                   Crédito 10x
                 </td>
                 <td className="p-3 border-b border-gray-400 flex gap-4 items-center justify-center">
-                  <button><EditIcon  sx={{ color: green[600] }}/></button>
-                  <button><DeleteIcon  sx={{ color: green[600] }}/></button>
+                  <button className="p-3"><EditIcon  sx={{ color: green[600] }}/></button>
+                  <button className="p-3"><DeleteIcon  sx={{ color: green[600] }}/></button>
                 </td>
               </tr>
             </table>
-            <button className=" bg-primary-600 w-2/3 p-4 rounded-b text-white font-bold hover:brightness-90">
+            <button className=" bg-primary-600 w-2/3 p-4 rounded-b text-white font-bold hover:brightness-90 mt-1">
              <AddIcon/> ADICIONAR VENDA
             </button>
           </div>

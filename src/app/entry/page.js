@@ -100,10 +100,10 @@ export default function Entry() {
                         {entry.provider}
                       </td>
                       <td className="p-3 border-b border-gray-400 flex gap-4 items-center justify-center">
-                        <button onClick={() => router.push(`/entry/edit/${entry.id}`)}>
+                        <button className="p-3" onClick={() => router.push(`/entry/edit/${entry.id}`)}>
                           <EditIcon sx={{ color: green[600] }} />
                         </button>
-                        <button onClick={() => {
+                        <button className="p-3" onClick={() => {
                           const confirm = window.confirm(`Tem certeza que deseja excluir esta entrada?`)
                           if (confirm) handleDelete(entry.id)
                         }}>
