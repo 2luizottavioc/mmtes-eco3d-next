@@ -19,9 +19,10 @@ const SidebarLinks = () => {
           <a onClick={() => router.push("/sales")}>Vendas</a>
         </li >
       </ul >
-  <button 
-                  className="bg-primary-600 text-white w-full font-bold text-base py-2 px-4 rounded-lg hover:brightness-90"
-                  onClick={() => signOut()}>SAIR</button>
+      <button 
+        className="bg-primary-600 text-white w-full font-bold text-base py-2 px-4 rounded-lg hover:brightness-90"
+        onClick={() => signOut()}>SAIR
+      </button>
     </aside >
   );
 };
